@@ -3,6 +3,7 @@ const { ObjectId } = require("mongodb");
 class SachService {
   constructor(client) {
     this.Sach = client.db().collection("sach");
+    this.NhaXuatBan = client.db().collection("nhaxuatban");
   }
 
   extractSachData(payload) {
@@ -24,6 +25,16 @@ class SachService {
 
   async create(payload) {
     const sach = this.extractSachData(payload);
+
+    // Kiểm tra xem MaNXB có tồn tại không trước khi thêm sách
+    const nxbExists = await this.NhaXuatBan.findOne({
+      MaNXB: sach.MaNXB
+    });
+
+    if (!nxbExists) {
+      throw new Error("MaNXB does not exist");
+    }
+
     const result = await this.Sach.findOneAndUpdate(
       { MaSach: sach.MaSach },
       { $set: sach },

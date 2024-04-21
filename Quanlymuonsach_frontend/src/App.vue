@@ -26,9 +26,10 @@ export default {
     top: 5px;
     height: 100%;
     font-size: 20px;
-    padding: 0px 5px;
     right: 5px;
     background-color: #fff;
+    margin-left: 250px;
+    padding: 20px;
 }
 
 .main .padding {

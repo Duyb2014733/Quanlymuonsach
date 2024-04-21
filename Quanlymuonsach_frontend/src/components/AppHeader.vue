@@ -1,46 +1,47 @@
 <template>
-    <div class="head">
-        <a href="/" class="btn" type="button">
-            <span>Quản lý mượn sách</span>
-        </a>
-    </div>
-    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    <div class="body">
-        <ul class="list-unstyled px-2">
-            <li>
-                <router-link :to="{ name: 'quanlymuonsach' }" class="btn" type="button">
-                    <span>Quản lý tài khoản</span>
-                </router-link>
-            </li>
-        </ul>
-    </div>
-
-    <div class="footer">
+    <div class="sidebar">
+        <div class="head">
+            <router-link to="/" class="btn" type="button">
+                <span>Quản lý mượn sách</span>
+            </router-link>
+        </div>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-        <ul class="list-unstyled px-2">
-            <template v-if="!isLoggedIn">
+        <div class="body">
+            <ul class="list-unstyled px-2">
                 <li>
-                    <router-link :to="{ name: 'nhanvien.dangky' }" class="btn" type="button">
-                        <span>Đăng Kí</span>
+                    <router-link :to="{ name: 'quanlymuonsach' }" class="btn" type="button">
+                        <span>Quản lý tài khoản</span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link :to="{ name: 'nhanvien.dangnhap' }" class="btn" type="button">
-                        <span>Đăng Nhập</span>
-                    </router-link>
-                </li>
-            </template>
-            <template v-else>
-                <li>
-                    <router-link :to="{ name: 'nhanvien.thongtinnhanvien' }" class="btn" type="button">
-                        <span>Thông tin nhân viên</span>
-                    </router-link>
-                </li>
-                <li>
-                    <button @click="logout" class="btn btn-link nav-link">Đăng xuất</button>
-                </li>
-            </template>
-        </ul>
+            </ul>
+        </div>
+        <div class="footer">
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            <ul class="list-unstyled px-2">
+                <template v-if="!isLoggedIn">
+                    <li>
+                        <router-link :to="{ name: 'nhanvien.dangky' }" class="btn" type="button">
+                            <span>Đăng Kí</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{ name: 'nhanvien.dangnhap' }" class="btn" type="button">
+                            <span>Đăng Nhập</span>
+                        </router-link>
+                    </li>
+                </template>
+                <template v-else>
+                    <li>
+                        <router-link :to="{ name: 'nhanvien.thongtinnhanvien' }" class="btn" type="button">
+                            <span>Thông tin nhân viên</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <button @click="logout" class="btn btn-link nav-link">Đăng xuất</button>
+                    </li>
+                </template>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -78,8 +79,7 @@ export default {
 };
 </script>
 
-
-<style>
+<style scoped>
 .sidebar {
     position: fixed;
     height: 100%;
@@ -89,6 +89,8 @@ export default {
     color: #fff;
     border: rgb(97, 93, 93);
     border-style: solid;
+    width: 240px;
+    /* Độ rộng thanh điều hướng */
 }
 
 .sidebar .head {
@@ -99,16 +101,14 @@ export default {
 }
 
 .sidebar .head a {
-    position: fixed;
-    font-size: 25px;
     text-align: left;
     width: 100%;
     height: 100%;
     color: #fff;
+    /* Kích thước phông chữ cho tiêu đề */
 }
 
 .sidebar .body {
-    position: fixed;
     align-items: center;
     text-align: center;
     color: #fff;
@@ -119,17 +119,15 @@ export default {
     width: 100%;
     height: 100%;
     color: #fff;
-}
-
-.sidebar a:hover {
-    background-color: #2e3135;
+    /* Kích thước phông chữ cho tiêu đề */
 }
 
 .sidebar .footer {
     position: absolute;
     bottom: 0;
-    height: auto;
-    align-items: center;
+    width: 100%;
+    /* Đảm bảo rằng phần footer có độ rộng 100% */
+    color: #fff;
     text-align: center;
 }
 
@@ -138,5 +136,9 @@ export default {
     width: 100%;
     height: 100%;
     color: #fff;
+}
+
+.sidebar a:hover {
+    background-color: #2e3135;
 }
 </style>

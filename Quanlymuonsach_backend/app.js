@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-const contactsRouter = require("./app/routes/contact.route");
+const docGiaRouter = require("./app/router/DocGia.route");
+const nhanVienRouter = require("./app/router/NhanVien.route");
+const nhanXuatBanRouter = require("./app/router/NhaXuatBan.route");
+const sachRouter = require("./app/router/Sach.route");
+const theoDoiMuonSachRouter = require("./app/router/TheoDoiMuonSach.route");
 const ApiError = require("./app/api-error");
 
 const app = express();
@@ -11,7 +15,15 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to contact book application." });
 });
-app.use("/api/contacts", contactsRouter);
+app.use("/api/docgia", docGiaRouter);
+
+app.use("/api/nhanvien", nhanVienRouter);
+
+app.use("/api/nhaxuatban", nhanXuatBanRouter);
+
+app.use("/api/sach", sachRouter);
+
+app.use("/api/theodoimuonsach", theoDoiMuonSachRouter);
 
 app.use((req, res, next) => {
 

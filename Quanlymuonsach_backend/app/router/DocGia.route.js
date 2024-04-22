@@ -1,5 +1,5 @@
 const express = require("express");
-const docGiaController = require("../controllers/docgia.controller");
+const docGiaController = require("../controllers/DocGia.controller");
 
 const router = express.Router();
 

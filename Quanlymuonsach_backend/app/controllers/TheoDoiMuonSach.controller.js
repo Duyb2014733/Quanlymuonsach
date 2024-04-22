@@ -1,4 +1,4 @@
-const TheoDoiMuonSachService = require("../services/theodoimuonsach.service");
+const TheoDoiMuonSachService = require("../services/Theodoimuonsach.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 

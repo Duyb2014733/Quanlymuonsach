@@ -1,5 +1,5 @@
 const express = require("express");
-const nhaXuatBanController = require("../controllers/nhaxuatban.controller");
+const nhaXuatBanController = require("../controllers/NhaXuatBan.controller");
 
 const router = express.Router();
 

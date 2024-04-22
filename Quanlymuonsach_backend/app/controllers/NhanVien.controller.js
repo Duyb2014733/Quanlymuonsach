@@ -1,4 +1,4 @@
-const NhanVienService = require("../services/nhanvien.service");
+const NhanVienService = require("../services/NhanVien.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 

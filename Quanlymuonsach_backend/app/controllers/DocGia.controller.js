@@ -1,4 +1,4 @@
-const DocGiaService = require("../services/docgia.service");
+const DocGiaService = require("../services/DocGia.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 

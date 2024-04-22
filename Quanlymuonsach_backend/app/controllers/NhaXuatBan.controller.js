@@ -1,4 +1,4 @@
-const NhaXuatBanService = require("../services/nhaxuatban.service");
+const NhaXuatBanService = require("../services/NhaXuatBan.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 

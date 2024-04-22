@@ -9,8 +9,18 @@
         <div class="body">
             <ul class="list-unstyled px-2">
                 <li>
-                    <router-link :to="{ name: 'quanlymuonsach' }" class="btn" type="button">
-                        <span>Quản lý tài khoản</span>
+                    <router-link :to="{ name: 'nhaxuatban.list' }" class="btn" type="button">
+                        <span>Quản lý NXB</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'sach.list' }" class="btn" type="button">
+                        <span>Quản lý Sách</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'docgia.list' }" class="btn" type="button">
+                        <span>Quản lý Độc Giả</span>
                     </router-link>
                 </li>
             </ul>

@@ -14,6 +14,7 @@ class DocGiaService {
       Phai: payload.Phai,
       DiaChi: payload.DiaChi,
       DienThoai: payload.DienThoai,
+      MatKhau: payload.MatKhau,
     };
     // Remove undefined fields
     Object.keys(docGia).forEach(

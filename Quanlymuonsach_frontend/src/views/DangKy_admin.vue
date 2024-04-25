@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Đăng ký</button>
-                        <router-link :to="{ name: 'nhanvien.dangnhap' }" class="ml-2 btn btn-secondary">Đăng
+                        <router-link :to="{ name: 'nhanvien.dangnhap_admin' }" class="ml-2 btn btn-secondary">Đăng
                             nhập</router-link>
                     </div>
                 </Form>
@@ -99,7 +99,7 @@ export default {
 
                 await this.registerUser(payload);
                 // Chuyển hướng đến trang booking sau khi đăng ký thành công
-                // this.$router.push({ name: 'booking' });
+                // this.$router.push({ name: 'home_admin' });
             } catch (error) {
                 console.error("Đã xảy ra lỗi khi đăng ký:", error.message);
             }

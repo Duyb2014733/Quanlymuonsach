@@ -50,7 +50,7 @@ export default {
         async updateBook(data) {
             try {
                 await SachService.update(this.book._id, data);
-                this.message = "Sách được cập nhật thành công.";
+                alert("Sách được cập nhật thành công.");
             } catch (error) {
                 console.log(error);
             }

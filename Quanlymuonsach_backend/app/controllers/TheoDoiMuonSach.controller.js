@@ -1,4 +1,4 @@
-const TheoDoiMuonSachService = require("../services/Theodoimuonsach.service");
+const TheoDoiMuonSachService = require("../services/TheoDoiMuonSach.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 
@@ -95,3 +95,4 @@ exports.deleteAll = async (req, res, next) => {
     );
   }
 };
+

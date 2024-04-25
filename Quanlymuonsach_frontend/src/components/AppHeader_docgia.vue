@@ -1,54 +1,49 @@
 <template>
     <div class="sidebar">
         <div class="head">
-            <router-link to="/" class="btn" type="button">
-                <span>Quản lý mượn sách</span>
+            <router-link :to="{ name: 'home' }" class="navbar-brand">
+                <i class="fa-solid fa-book"></i>
+                Quản lý mượn sách
             </router-link>
         </div>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
         <div class="body">
             <ul class="list-unstyled px-2">
-                <li>
-                    <router-link :to="{ name: 'nhaxuatban.list' }" class="btn" type="button">
-                        <span>Quản lý NXB</span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'sach.list' }" class="btn" type="button">
-                        <span>Quản lý Sách</span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'docgia.list' }" class="btn" type="button">
-                        <span>Quản lý Độc Giả</span>
-                    </router-link>
-                </li>
+
             </ul>
         </div>
         <div class="footer">
             <hr style="height:2px;border-width:0;color:gray;background-color:gray">
             <ul class="list-unstyled px-2">
                 <template v-if="!isLoggedIn">
-                    <li>
-                        <router-link :to="{ name: 'nhanvien.dangky' }" class="btn" type="button">
-                            <span>Đăng Kí</span>
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'docgia.dangky_docgia' }" class="nav-link">
+                            <i class="fa-regular fa-address-card"></i>
+                            Đăng Kí
                         </router-link>
                     </li>
-                    <li>
-                        <router-link :to="{ name: 'nhanvien.dangnhap' }" class="btn" type="button">
-                            <span>Đăng Nhập</span>
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'docgia.dangnhap_docgia' }" class="nav-link">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Đăng Nhập
                         </router-link>
+
                     </li>
                 </template>
                 <template v-else>
-                    <li>
-                        <router-link :to="{ name: 'nhanvien.thongtinnhanvien' }" class="btn" type="button">
-                            <span>Thông tin nhân viên</span>
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'docgia.detail' }" class="nav-link">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                            <span> Đọc giả</span>
                         </router-link>
                     </li>
-                    <li>
-                        <button @click="logout" class="btn btn-link nav-link">Đăng xuất</button>
+                    <li class="nav-item">
+                        <a @click="logout" class="btn btn-link nav-link">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span> Đăng xuất</span>
+                        </a>
                     </li>
+
                 </template>
             </ul>
         </div>
@@ -57,19 +52,19 @@
 
 <script>
 export default {
-    name: 'AppHeader',
+    name: "AppHeader",
     data() {
         return {
-            isLoggedIn: false
+            isLoggedIn: false,
         };
     },
     mounted() {
         let intervalId;
 
         intervalId = setInterval(() => {
-            const userId = window.localStorage.getItem('userId');
+            const docgiaId = window.localStorage.getItem("docgiaId");
 
-            if (userId) {
+            if (docgiaId) {
                 this.isLoggedIn = true;
             }
         }, 5000); // Gọi mỗi 5 giây (5000 milliseconds)
@@ -81,11 +76,11 @@ export default {
 
     methods: {
         logout() {
-            localStorage.removeItem('userId');
+            localStorage.removeItem("docgiaId");
             this.isLoggedIn = false;
-            this.$router.push({ name: 'nhanvien.dangnhap' });
+            this.$router.push({ name: "docgia.dangnhap_docgia" });
         },
-    }
+    },
 };
 </script>
 
@@ -142,6 +137,8 @@ export default {
 }
 
 .sidebar .footer a {
+    text-align: center;
+    align-items: center;
     text-align: left;
     width: 100%;
     height: 100%;

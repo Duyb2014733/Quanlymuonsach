@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                        <router-link :to="{ name: 'nhanvien.dangky' }" class="ml-2 btn btn-secondary">Đăng ký</router-link>
+                        <router-link :to="{ name: 'nhanvien.dangky_admin' }" class="ml-2 btn btn-secondary">Đăng ký</router-link>
                     </div>
                 </Form>
             </div>
@@ -57,7 +57,8 @@ export default {
                 const user = await this.loginUser(this.loginData);
                 localStorage.setItem('userId', user._id);
                 // Chuyển hướng đến trang sau khi đăng nhập thành công
-                this.$router.push({ name: 'quanlymuonsach' });
+                // this.$router.push({ name: 'home_admin' });
+                alert('Đăng nhập thành công!')
             } catch (error) {
                 console.error("Đã xảy ra lỗi khi đăng nhập:", error.message);
             }

@@ -11,6 +11,7 @@ class TheoDoiMuonSachService {
       MaSach: payload.MaSach,
       NgayMuon: payload.NgayMuon,
       NgayTra: payload.NgayTra,
+      SoLuong: payload.SoLuong,
     };
     // Remove undefined fields
     Object.keys(theoDoiMuonSach).forEach(
@@ -22,7 +23,7 @@ class TheoDoiMuonSachService {
   async create(payload) {
     const theoDoiMuonSach = this.extractTheoDoiMuonSachData(payload);
     const result = await this.TheoDoiMuonSach.insertOne(theoDoiMuonSach);
-    return result.ops[0];
+    return result;
   }
 
   async find(filter) {
@@ -54,14 +55,14 @@ class TheoDoiMuonSachService {
       { $set: update },
       { returnDocument: "after" }
     );
-    return result.value;
+    return result;
   }
 
   async delete(id) {
     const result = await this.TheoDoiMuonSach.findOneAndDelete({
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
-    return result.value;
+    return result;
   }
 
   async deleteAll() {

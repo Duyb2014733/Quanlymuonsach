@@ -67,7 +67,7 @@ export default {
             if (confirm("Bạn muốn xóa NXB này?")) {
                 try {
                     await NhaXuatBanService.delete(this.publisher._id);
-                    this.$router.push({ name: "nhaxuatban.dsNXB" }); // Replace "publisherList" with the actual name of your publisher list route
+                    this.$router.push({ name: "nhaxuatban.list" }); // Replace "publisherList" with the actual name of your publisher list route
                 } catch (error) {
                     console.error(error);
                 }

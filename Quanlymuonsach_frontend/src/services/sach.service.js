@@ -1,4 +1,5 @@
 import createApiClient from "./api.service";
+
 class SachService {
   constructor(baseUrl = "/api/sach") {
     this.api = createApiClient(baseUrl);
@@ -22,4 +23,5 @@ class SachService {
     return (await this.api.delete(`/${id}`)).data;
   }
 }
+
 export default new SachService();

@@ -1,10 +1,10 @@
 <template>
     <div class="sidebar">
         <div class="head">
-            <router-link  class="btn" type="button">
+            <a  class="btn" type="button">
                 <i class="fa-solid fa-book"></i>
                 <span>Quản lý mượn sách</span>
-            </router-link>
+            </a>
         </div>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
         <div class="body">

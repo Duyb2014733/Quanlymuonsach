@@ -3,10 +3,6 @@ const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 
 exports.create = async (req, res, next) => {
-  if (!req.body.MaNXB) {
-    return next(new ApiError(400, "MaNXB can not be empty"));
-  }
-
   try {
     const nhaXuatBanService = new NhaXuatBanService(MongoDB.client);
     const document = await nhaXuatBanService.create(req.body);

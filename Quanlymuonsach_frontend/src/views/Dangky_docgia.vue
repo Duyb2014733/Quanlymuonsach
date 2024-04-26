@@ -40,6 +40,9 @@
             <input type="text" class="form-control" id="DienThoai" v-model="formData.DienThoai" required>
           </div>
           <button type="submit" class="btn btn-primary">Đăng ký</button>
+          <div v-if="showNotification" class="alert alert-success mt-3 fade-in" role="alert">
+            {{ notificationMessage }}
+          </div>
         </form>
       </div>
     </div>
@@ -61,6 +64,8 @@ export default {
         Phai: "Nam", // Giới tính mặc định là Nam
         DiaChi: "",
         DienThoai: "",
+        showNotification: false,
+        notificationMessage: ""
       }
     };
   },
@@ -69,21 +74,13 @@ export default {
       try {
         const docgia = await DocGiaService.create(this.formData);
         localStorage.setItem('docgiaId', docgia._id);
-        // Hiển thị thông báo popup
-        this.$toasted.success('Đăng ký thành công!', {
-          duration: 2000, // Thời gian hiển thị thông báo (ms)
-          position: 'top-right', // Vị trí của thông báo
-          action: {
-            text: 'OK', // Nút tùy chỉnh
-            onClick: (e, toastObject) => {
-              toastObject.goAway(0); // Ẩn thông báo khi người dùng nhấn nút
-            }
-          },
-        });
-        // Chuyển trang sau khi thông báo được hiển thị
+        this.showNotification = true;
+        this.notificationMessage = 'Đăng ký thành công!';
         setTimeout(() => {
+          this.showNotification = false;
+          // Chuyển trang sau khi ẩn thông báo
           this.$router.push({ name: 'home' });
-        }, 2000); // Chờ 2 giây trước khi chuyển trang
+        }, 2000);
       } catch (error) {
         console.error("Error submitting form:", error.message);
         // Xử lý lỗi khi đăng ký độc giả không thành công

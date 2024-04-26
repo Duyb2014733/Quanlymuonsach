@@ -15,24 +15,18 @@ import SachList from "@/views/Sach.list.vue";
 import { createRouter, createWebHistory } from "vue-router";
 const routes = [
 
-  // Phần của admin
-  // {
-  //   path: "/admin",
-  //   name: "home_admin",
-  //   component: Home_admin,
-  // },
   {
     path: "/admin",
     name: "nhanvien.dangnhap_admin",
     component: DangNhap_admin,
   },
   {
-    path: "/nhanvien/register",
+    path: "/nhanvien",
     name: "nhanvien.dangky_admin",
     component: DangKy_admin,
   },
   {
-    path: "/nhanvien/detail",
+    path: "/nhanvien",
     name: "nhanvien.thongtinnhanvien",
     component: ThongTinNhanVien,
   },
@@ -43,7 +37,7 @@ const routes = [
     props: true,
   },
   {
-    path: "/nhaxuatban/list",
+    path: "/nhaxuatban",
     name: "nhaxuatban.list",
     component: NhaXuatBanList,
   },
@@ -56,7 +50,7 @@ const routes = [
   },
 
   {
-    path: "/sach/list",
+    path: "/sach",
     name: "sach.list",
     component: SachList,
   },
@@ -69,7 +63,7 @@ const routes = [
   },
 
   {
-    path: "/docgia/list",
+    path: "/docgia",
     name: "docgia.list",
     component: DocGiaList,
   },
@@ -81,17 +75,17 @@ const routes = [
     component: Home,
   },
   {
-    path: "/docgia/register",
+    path: "/docgia",
     name: "docgia.dangky_docgia",
     component: dangky_docgia,
   },
   {
-    path: "/docgia/login",
+    path: "/docgia",
     name: "docgia.dangnhap_docgia",
     component: dangnhap_docgia,
   },
   {
-    path: "/docgia/detail",
+    path: "/docgia",
     name: "docgia.detail",
     component: docgia_detail,
   },

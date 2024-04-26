@@ -6,8 +6,7 @@
                 <Form @submit="submitForm" :validation-schema="formSchema">
                     <div class="form-group">
                         <label for="MSNV">Mã số nhân viên</label>
-                        <Field name="MSNV" type="text" class="form-control"
-                            v-model="loginData.MSNV" />
+                        <Field name="MSNV" type="text" class="form-control" v-model="loginData.MSNV" />
                         <ErrorMessage name="MSNV" class="error-feedback" />
                     </div>
                     <div class="form-group">
@@ -17,7 +16,11 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                        <router-link :to="{ name: 'nhanvien.dangky_admin' }" class="ml-2 btn btn-secondary">Đăng ký</router-link>
+                        <router-link :to="{ name: 'nhanvien.dangky_admin' }" class="ml-2 btn btn-secondary">Đăng
+                            ký</router-link>
+                    </div>
+                    <div v-if="showNotification" class="alert alert-success mt-3 fade-in" role="alert">
+                        {{ notificationMessage }}
                     </div>
                 </Form>
             </div>
@@ -43,6 +46,8 @@ export default {
                 Password: "",
             },
             formSchema: this.generateFormSchema(),
+            showNotification: false,
+            notificationMessage: ""
         };
     },
     methods: {
@@ -56,11 +61,22 @@ export default {
             try {
                 const user = await this.loginUser(this.loginData);
                 localStorage.setItem('userId', user._id);
-                // Chuyển hướng đến trang sau khi đăng nhập thành công
-                // this.$router.push({ name: 'home_admin' });
-                alert('Đăng nhập thành công!')
+                this.showNotification = true;
+                this.notificationMessage = 'Đăng nhập thành công!';
+                setTimeout(() => {
+                    this.showNotification = false;
+                    // Chuyển trang sau khi ẩn thông báo
+                    this.$router.push({ name: 'nhaxuatban.list' });
+                }, 2000);
+                
             } catch (error) {
-                console.error("Đã xảy ra lỗi khi đăng nhập:", error.message);
+                // Hiển thị thông báo lỗi
+                this.showNotification = true;
+                this.notificationMessage = 'Đăng nhập không thành công. Mã độc giả hoặc mật khẩu không đúng.';
+                // Tắt thông báo sau 2 giây
+                setTimeout(() => {
+                    this.showNotification = false;
+                }, 2000);
             }
         },
         async loginUser(loginData) {

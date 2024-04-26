@@ -2,17 +2,17 @@
     <form @submit.prevent="submitForm">
         <div class="form-group">
             <label for="MaNXB">Mã nhà xuất bản</label>
-            <input type="text" class="form-control" v-model="formData.MaNXB" />
+            <input type="text" class="form-control" v-model="NXBData.MaNXB" />
             <ErrorMessage name="MaNXB" class="error-feedback" />
         </div>
         <div class="form-group">
             <label for="TenNXB">Tên nhà xuất bản</label>
-            <input type="text" class="form-control" v-model="formData.TenNXB" />
+            <input type="text" class="form-control" v-model="NXBData.TenNXB" />
             <ErrorMessage name="TenNXB" class="error-feedback" />
         </div>
         <div class="form-group">
             <label for="DiaChi">Địa chỉ</label>
-            <input type="text" class="form-control" v-model="formData.DiaChi" />
+            <input type="text" class="form-control" v-model="NXBData.DiaChi" />
             <ErrorMessage name="DiaChi" class="error-feedback" />
         </div>
         <button type="submit" class="btn btn-primary">{{ publisher ? 'Cập nhật' : 'Thêm mới' }}</button>
@@ -25,6 +25,9 @@ import { ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 
 export default {
+    components: {
+        ErrorMessage
+    },
     props: {
         publisher: {
             type: Object,
@@ -33,7 +36,7 @@ export default {
     },
     data() {
         return {
-            formData: {
+            NXBData: {
                 MaNXB: '',
                 TenNXB: '',
                 DiaChi: ''
@@ -43,7 +46,7 @@ export default {
     },
     mounted() {
         if (this.publisher) {
-            this.formData = { ...this.publisher };
+            this.NXBData = { ...this.publisher };
         }
     },
     methods: {

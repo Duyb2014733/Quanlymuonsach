@@ -52,7 +52,7 @@
 
 <script>
 export default {
-    name: "AppHeader",
+    name: "AppHeader_docgia",
     data() {
         return {
             isLoggedIn: false,
@@ -67,7 +67,7 @@ export default {
             if (docgiaId) {
                 this.isLoggedIn = true;
             }
-        }, 5000); // Gọi mỗi 5 giây (5000 milliseconds)
+        }, 500); // Gọi mỗi 5 giây (5000 milliseconds)
 
         setTimeout(() => {
             clearInterval(intervalId);
